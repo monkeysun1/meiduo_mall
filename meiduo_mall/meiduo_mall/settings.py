@@ -9,11 +9,8 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-<<<<<<< HEAD
 
-=======
 import os
->>>>>>> 注册用户第一次
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,10 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
-=======
-    'apps.users',   #base_dir wei meiduo_mall
->>>>>>> 注册用户第一次
+    'apps.users',     #base_dir wei meiduo_mall
 ]
 
 MIDDLEWARE = [
@@ -83,17 +77,14 @@ WSGI_APPLICATION = 'meiduo_mall.wsgi.application'
 
 DATABASES = {
     'default': {
-<<<<<<< HEAD
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-=======
+
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'meiduo_mall',
         'USER': 'itcast',
         'PASSWORD': '123456',
         'HOST': '127.0.0.1',
         'PORT': '3306',
->>>>>>> 注册用户第一次
+
     }
 }
 
@@ -138,8 +129,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-<<<<<<< HEAD
-=======
+
 
 ################redis##########
 CACHES = {
@@ -205,4 +195,4 @@ LOGGING = {
 }
 
 AUTH_USER_MODEL = 'users.User'
->>>>>>> 注册用户第一次
+
