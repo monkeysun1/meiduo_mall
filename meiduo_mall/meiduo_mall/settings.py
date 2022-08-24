@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-p857k-$ha15vava!2x0^=*mh*+j9^02-d7h#6pi-c#7hiaoe0w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,13 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.users',     #base_dir wei meiduo_mall
+    'corsheaders',
+    'apps.verifications'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -142,11 +145,18 @@ CACHES = {
     },
     "session": {  # 默认
             "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": "redis://127.0.0.1:6379/0",
+            "LOCATION": "redis://127.0.0.1:6379/1",
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
             }
+    },
+    "code": { # 验证码
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
+    },
     }
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
@@ -196,3 +206,12 @@ LOGGING = {
 
 AUTH_USER_MODEL = 'users.User'
 
+# CORS
+CORS_ORIGIN_WHITELIST = (
+    'http://127.0.0.1:8080',
+    'http://localhost:8080',
+    'http://www.meiduo.site:8080',
+    'http://www.meiduo.site:8000'
+)
+
+CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
